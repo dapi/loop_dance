@@ -15,8 +15,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "loop_dance"
   gem.homepage = "http://github.com/dapi/loop_dance"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Simple auto-starting daemon based on the looper and daemon_controller}
+  gem.description = %Q{Really easy setup. Auto-start daaemon at rails server startup. Rake's tasks based control.}  # ' anti ruby-mode
   gem.email = "danil@orionet.ru"
   gem.authors = ["Danil Pismenny"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
@@ -40,7 +40,21 @@ Rcov::RcovTask.new do |test|
   test.verbose = true
 end
 
-task :default => :test
+require 'rspec/core'
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new(:spec) do |spec|
+  spec.pattern = FileList['spec/**/*_spec.rb']
+end
+
+RSpec::Core::RakeTask.new(:rcov) do |spec|
+  spec.pattern = 'spec/**/*_spec.rb'
+  spec.rcov = true
+end
+
+task :default => :spec
+
+
+#task :default => :test
 
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|

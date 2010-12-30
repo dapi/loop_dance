@@ -1,12 +1,12 @@
 = LoopDance
 
-No forks. No threads. Just looped scheduler. Based on `daemon_controller` and `looper`.
+No forks. No threads. Just looped scheduler based on `daemon_controller` and `looper` for rails 3 projects.
 
 Easy to install:
 
     gem 'loop_dance'
 
-Simple to setup. Just create file `lib/loop_dance.rb`:
+Simple to setup. Just create file 'lib/loop_dance.rb':
 
     class Dancer < LoopDance::Dancer
 
