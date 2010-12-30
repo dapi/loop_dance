@@ -1,6 +1,37 @@
-= loop_dance
+= LoopDance
 
-Description goes here.
+No forks. No threads. Just looped scheduler. Based on `daemon_controller` and `looper`.
+
+Easy to install:
+
+    gem 'loop_dance'
+
+Simple to setup. Just create file `lib/loop_dance.rb`:
+
+    class Dancer < LoopDance::Dancer
+
+      every 3.hours do
+        User.notify_all
+      end
+
+      every 60.seconds do
+        Report.checks
+      end
+
+    end
+
+LoopDance automatically starts at the rails server startup.
+
+Can be managed from the application:
+
+    Dancer.start unless Dancer.running?
+
+Can be managed by the rake tasks:
+
+    rake loop_dance:start
+    rake loop_dance:stop
+    rake loop_dance:status
+
 
 == Contributing to loop_dance
  

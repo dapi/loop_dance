@@ -11,6 +11,8 @@ doc
 # bundler
 .bundle
 
+.emacs*
+
 # jeweler generated
 pkg
 
