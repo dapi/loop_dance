@@ -10,7 +10,7 @@ No forks. No threads. Just looped scheduler based on `daemon_controller` and `lo
 
 Just create file 'lib/loop_dance.rb':
 
-    class Dancer < LoopDance::Dancer
+    class Dancer1 < LoopDance::Dancer
 
       every 3.hours do
         User.notify_all
@@ -28,14 +28,17 @@ LoopDance automatically starts at the rails 3 server startup.
 
 From the application:
 
-    Dancer.start unless Dancer.running?
+    Dancer.controller.start unless Dancer.controller.running?
 
 By the rake tasks (TODO):
 
-    rake loop_dance:start
-    rake loop_dance:stop
+    rake loop_dance:start_all
+    rake loop_dance:stop_all
     rake loop_dance:status
 
+    rake loop_dance:dancer1:start
+    rake loop_dance:dancer1:stop
+    rake loop_dance:dancer1:status
 
 == Contributing to loop_dance
  
