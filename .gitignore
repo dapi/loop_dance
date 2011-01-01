@@ -50,3 +50,7 @@ pkg
 /test/rails/log/dancer1.pid.lock
 /test/rails/log/dancer2.pid
 /test/rails/log/dancer2.pid.lock
+/rails_example/log/dancer1.pid
+/rails_example/log/dancer1.pid.lock
+/rails_example/log/dancer2.pid
+/rails_example/log/dancer2.pid.lock

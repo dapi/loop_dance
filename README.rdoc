@@ -1,6 +1,7 @@
 = LoopDance
 
-No forks. No threads. Just looped scheduler based on `daemon_controller` and `looper`
+No forks. No threads. Just looped scheduler based on `daemon_controller` and `looper`.
+We call it 'Dancer'.
 
 == Easy to install
 
@@ -8,7 +9,7 @@ No forks. No threads. Just looped scheduler based on `daemon_controller` and `lo
 
 == Simple to setup
 
-Just create file 'lib/loop_dance.rb':
+Create file 'lib/loop_dance.rb':
 
     class Dancer1 < LoopDance::Dancer
 
@@ -26,9 +27,9 @@ LoopDance automatically starts at the rails 3 server startup.
 
 == Useful management
 
-From the application:
+From the rails application:
 
-    Dancer.controller.start unless Dancer.controller.running?
+    Dancer1.controller.start unless Dancer1.controller.running?
 
 By the rake tasks (TODO):
 
