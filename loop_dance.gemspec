@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{loop_dance}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Danil Pismenny"]
-  s.date = %q{2010-12-31}
+  s.date = %q{2011-01-01}
   s.description = %q{Really easy setup. Auto-start daaemon at rails server startup. Rake's tasks based control.}
   s.email = %q{danil@orionet.ru}
   s.extra_rdoc_files = [
@@ -23,12 +23,55 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "init.rb",
     "lib/loop_dance.rb",
+    "lib/loop_dance/commands.rb",
+    "lib/loop_dance/controller.rb",
     "lib/loop_dance/dancer.rb",
+    "lib/loop_dance/railtie.rb",
     "lib/loop_dance/task.rb",
+    "loop_dance.gemspec",
+    "rails/init.rb",
     "spec/dancer_spec.rb",
     "spec/spec_helper.rb",
-    "spec/task_spec.rb"
+    "spec/task_spec.rb",
+    "test/rails/.gitignore",
+    "test/rails/Gemfile",
+    "test/rails/Rakefile",
+    "test/rails/app/controllers/application_controller.rb",
+    "test/rails/config.ru",
+    "test/rails/config/application.rb",
+    "test/rails/config/boot.rb",
+    "test/rails/config/database.yml",
+    "test/rails/config/environment.rb",
+    "test/rails/config/environments/development.rb",
+    "test/rails/config/environments/production.rb",
+    "test/rails/config/environments/test.rb",
+    "test/rails/config/initializers/backtrace_silencers.rb",
+    "test/rails/config/initializers/inflections.rb",
+    "test/rails/config/initializers/mime_types.rb",
+    "test/rails/config/initializers/secret_token.rb",
+    "test/rails/config/initializers/session_store.rb",
+    "test/rails/config/locales/en.yml",
+    "test/rails/config/routes.rb",
+    "test/rails/db/seeds.rb",
+    "test/rails/lib/dancers.rb",
+    "test/rails/lib/tasks/.gitkeep",
+    "test/rails/public/404.html",
+    "test/rails/public/422.html",
+    "test/rails/public/500.html",
+    "test/rails/public/favicon.ico",
+    "test/rails/public/images/rails.png",
+    "test/rails/public/index.html",
+    "test/rails/public/javascripts/application.js",
+    "test/rails/public/javascripts/controls.js",
+    "test/rails/public/javascripts/dragdrop.js",
+    "test/rails/public/javascripts/effects.js",
+    "test/rails/public/javascripts/prototype.js",
+    "test/rails/public/javascripts/rails.js",
+    "test/rails/public/robots.txt",
+    "test/rails/public/stylesheets/.gitkeep",
+    "test/rails/script/rails"
   ]
   s.homepage = %q{http://github.com/dapi/loop_dance}
   s.licenses = ["MIT"]
@@ -37,26 +80,23 @@ Gem::Specification.new do |s|
   s.summary = %q{Simple auto-starting daemon based on the looper and daemon_controller}
   s.test_files = [
     "spec/dancer_spec.rb",
-    "spec/rails_test/app/controllers/application_controller.rb",
-    "spec/rails_test/app/helpers/application_helper.rb",
-    "spec/rails_test/config/application.rb",
-    "spec/rails_test/config/boot.rb",
-    "spec/rails_test/config/environment.rb",
-    "spec/rails_test/config/environments/development.rb",
-    "spec/rails_test/config/environments/production.rb",
-    "spec/rails_test/config/environments/test.rb",
-    "spec/rails_test/config/initializers/backtrace_silencers.rb",
-    "spec/rails_test/config/initializers/inflections.rb",
-    "spec/rails_test/config/initializers/mime_types.rb",
-    "spec/rails_test/config/initializers/secret_token.rb",
-    "spec/rails_test/config/initializers/session_store.rb",
-    "spec/rails_test/config/routes.rb",
-    "spec/rails_test/db/seeds.rb",
-    "spec/rails_test/lib/dancers.rb",
-    "spec/rails_test/test/performance/browsing_test.rb",
-    "spec/rails_test/test/test_helper.rb",
     "spec/spec_helper.rb",
-    "spec/task_spec.rb"
+    "spec/task_spec.rb",
+    "test/rails/app/controllers/application_controller.rb",
+    "test/rails/config/application.rb",
+    "test/rails/config/boot.rb",
+    "test/rails/config/environment.rb",
+    "test/rails/config/environments/development.rb",
+    "test/rails/config/environments/production.rb",
+    "test/rails/config/environments/test.rb",
+    "test/rails/config/initializers/backtrace_silencers.rb",
+    "test/rails/config/initializers/inflections.rb",
+    "test/rails/config/initializers/mime_types.rb",
+    "test/rails/config/initializers/secret_token.rb",
+    "test/rails/config/initializers/session_store.rb",
+    "test/rails/config/routes.rb",
+    "test/rails/db/seeds.rb",
+    "test/rails/lib/dancers.rb"
   ]
 
   if s.respond_to? :specification_version then

@@ -1,6 +1,8 @@
 # rcov generated
 coverage
 
+log/*
+
 Gemfile.lock
 
 # rdoc generated
@@ -44,3 +46,7 @@ pkg
 #
 # For vim:
 #*.swp
+/test/rails/log/dancer1.pid
+/test/rails/log/dancer1.pid.lock
+/test/rails/log/dancer2.pid
+/test/rails/log/dancer2.pid.lock

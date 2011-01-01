@@ -30,7 +30,7 @@ From the application:
 
     Dancer.start unless Dancer.running?
 
-By the rake tasks:
+By the rake tasks (TODO):
 
     rake loop_dance:start
     rake loop_dance:stop

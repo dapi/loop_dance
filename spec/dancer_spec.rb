@@ -10,7 +10,7 @@ describe LoopDance do
   describe "examples" do 
 
     before(:all) do
-      class Dancer1 < LoopDance
+      class Dancer1 < LoopDance::Dancer
         every 2.seconds do
         end
         every 4.seconds do
@@ -25,12 +25,14 @@ describe LoopDance do
 
     it { Dancer1.tasks.count.should == 4 }
     it { Dancer1.timeout.should == 2 }
-    it { LoopDance.tasks.should be_blank }
+    it { LoopDance::Dancer.tasks.should be_blank }
+    it { Dancer1.maximal_timeout.should == 10 }
+
 
     describe "another dancer not change first dancer's tasks" do
       
       before(:all) do
-        class Dancer2 < LoopDance
+        class Dancer2 < LoopDance::Dancer
           every 6.seconds do
           end
           every 11.seconds do
@@ -40,13 +42,14 @@ describe LoopDance do
 
       it { Dancer2.tasks.count.should == 2 }
       it { Dancer2.timeout.should == 1 }
+      it { Dancer2.maximal_timeout.should == 11 }
       
     end
 
     describe "find right minimal timeout" do
       
       before(:all) do
-        class Dancer3 < LoopDance
+        class Dancer3 < LoopDance::Dancer
           every 6.seconds do
           end
           every 9.seconds do
@@ -56,20 +59,22 @@ describe LoopDance do
 
       it { Dancer3.tasks.count.should == 2 }
       it { Dancer3.timeout.should == 3 }
+      it { Dancer3.maximal_timeout.should == 9 }
       
     end
 
     describe "method stop stops the loop" do
       
       before(:all) do
-        class Dancer < LoopDance
+        class Dancer < LoopDance::Dancer
           every 2.seconds do
             stop
           end
         end
       end
 
-      it { Dancer.loopme }
+      it { Dancer.dance }
+      it { Dancer.maximal_timeout.should == 2 }
       
     end
 

@@ -1,4 +1,3 @@
-debugger
 class LoopDance::Task
   attr_accessor :last_run_at, :block, :interval
   
