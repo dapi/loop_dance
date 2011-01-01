@@ -23,8 +23,4 @@ module LoopDance
   
 end
 
-begin
-  require 'loop_dance/railtie'
-rescue LoadError => e
-  puts "Can't load loop_dance/railtie"
-end
+require 'loop_dance/railtie' if defined? Rails
