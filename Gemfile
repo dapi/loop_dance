@@ -3,7 +3,7 @@ source "http://rubygems.org"
 # Example:
 gem "activesupport", ">= 3.0"
 gem "i18n"
-gem "daemon_controller"
+gem "daemon_controller", ">= 0.2.5"
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.

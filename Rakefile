@@ -15,14 +15,18 @@ Jeweler::Tasks.new do |gem|
   gem.name = "loop_dance"
   gem.homepage = "http://github.com/dapi/loop_dance"
   gem.license = "MIT"
-  gem.summary = %Q{Simple auto-starting daemon based on the looper and daemon_controller}
-  gem.description = %Q{Really easy setup. Auto-start daaemon at rails server startup. Rake's tasks based control.}  # ' anti ruby-mode
+  gem.summary = %Q{Daemon builder and controller. Easy setup and managed from the rails application or rake tasks. Autostart at rails server startup}   # ' anti ruby-mode
+  gem.description = %Q{Really simple daemon builder and manager. Based on the looper and daemon_controller}
   gem.email = "danil@orionet.ru"
   gem.authors = ["Danil Pismenny"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
   # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
   gem.add_runtime_dependency 'daemon_controller', '>= 0.2.5'
-  #  gem.add_development_dependency 'rspec', '> 1.2.3'
+  gem.add_runtime_dependency 'active_support', '>= 3'
+  gem.add_runtime_dependency 'i18n'
+  gem.add_development_dependency 'rspec'
+  gem.add_development_dependency 'jeweler'
+  gem.add_development_dependency 'shoulda'
 end
 Jeweler::RubygemsDotOrgTasks.new
 

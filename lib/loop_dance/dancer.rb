@@ -4,12 +4,10 @@ module LoopDance
   
   autoload :Commands, 'loop_dance/commands'
   autoload :Controller, 'loop_dance/controller'
-  
+
   class Dancer
     
-    
     extend LoopDance::Commands
-
 
     class << self
 

@@ -42,6 +42,17 @@ module LoopDance
     def log(text)
       puts "#{Time.now} #{self}: #{text}"
     end
+
+    def print_status
+      puts  "#{self}: timeout: #{self.timeout.inspect}, status: #{self.controller.running? ? 'running' : 'stopped'}\n"
+      if tasks.empty?
+        puts "  no tasks defined"
+      else
+        tasks.each_with_index do |task,index|
+          puts "  Task ##{index} runs every #{task.interval.inspect}"
+        end
+      end
+    end
     
     private
 

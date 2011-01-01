@@ -3,11 +3,22 @@ module LoopDance
   autoload :Task,  "loop_dance/task"
   autoload :Dancer,  "loop_dance/dancer"
 
-  def self.auto_start
-    return puts "LoopDance: No dancers to start" if LoopDance::Dancer.subclasses.empty?
-    LoopDance::Dancer.subclasses.each do |dancer|
-      dancer.controller.auto_start if dancer.start_automatic
+  class << self
+    
+    def start_all( force=false )
+      return puts "LoopDance: No dancers defined" if LoopDance::Dancer.subclasses.empty?
+      LoopDance::Dancer.subclasses.each do |dancer|
+        dancer.controller.safely_start if force || dancer.start_automatic
+      end
     end
+
+    def stop_all
+      return puts "LoopDance: No dancers defined" if LoopDance::Dancer.subclasses.empty?
+      LoopDance::Dancer.subclasses.each do |dancer|
+        dancer.controller.safely_stop
+      end
+    end
+    
   end
   
 end

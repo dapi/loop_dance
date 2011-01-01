@@ -38,18 +38,35 @@ module LoopDance
       end
     end
     
-    def auto_start
+    def safely_start
       dancer.log  "Starting.. (#{@start_command})"
-      start unless running?
+      if running?
+        dancer.log "Dancer is already running"
+      else
+        start
+        dancer.log "Started"
+      end
     rescue => exception # DaemonController::StartTimeout
-      dancer.log "Exception until starting #{dancer}: #{exception.inspect}"
-      dancer.log  exception.backtrace if defined?( Rails ) && !Rails.env.production?
+      log_exception exception
     end
-    
-    
+
+    def safely_stop
+      dancer.log  "Stopping.."
+      stop if running?
+    rescue => exception # DaemonController::StartTimeout
+      log_exception exception
+    end
+
     #stop
     #start
     #running
+
+    private
+
+    def log_exception( exception )
+      dancer.log "Exception until stopping #{dancer}: #{exception.inspect}"
+      dancer.log  exception.backtrace if defined?( Rails ) && !Rails.env.production?
+    end
   
   end
 end
