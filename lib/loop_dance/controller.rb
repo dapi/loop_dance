@@ -64,8 +64,8 @@ module LoopDance
     private
 
     def log_exception( exception )
-      dancer.log "Exception until stopping #{dancer}: #{exception.inspect}"
-      dancer.log  exception.backtrace if defined?( Rails ) && !Rails.env.production?
+      dancer.log "Exception #{dancer}: #{exception.inspect}"
+      dancer.log  exception.backtrace if exception.inspect=~/DaemonController/ && defined?( Rails ) && !Rails.env.production? 
     end
   
   end
