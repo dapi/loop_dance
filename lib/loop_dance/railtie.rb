@@ -5,6 +5,8 @@ module LoopDance
 
     def self.load_dancers
       require 'dancers'
+    rescue LoadError => err
+      puts "LoopDance: file 'lib/dancers.rb' not exists. No dencers are defined."
     end
 
     initializer 'loop_dance.initialize' do
