@@ -3,9 +3,7 @@ require 'daemon_controller'
 module LoopDance
   class Controller < DaemonController
 
-    cattr_accessor :dancer, :start_timeout
-
-    self.start_timeout = 45
+    cattr_accessor :dancer
 
     class << self
 
@@ -17,9 +15,7 @@ module LoopDance
           :start_command => start_command,
           :ping_command => lambda { true },
           :pid_file => dancer.pid_file,
-          :log_file => log_file,
-          :start_timeout => start_timeout,
-          :log_file_activity_timeout => dancer.maximal_timeout + 3  # 3 seconds to stock
+          :log_file => log_file
         }
         super h
       end
