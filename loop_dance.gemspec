@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{loop_dance}
-  s.version = "0.2.3"
+  s.version = "0.2.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Danil Pismenny"]
-  s.date = %q{2011-01-01}
+  s.date = %q{2011-01-02}
   s.description = %q{Really simple daemon builder and manager. Based on the looper and daemon_controller}
   s.email = %q{danil@orionet.ru}
   s.extra_rdoc_files = [
@@ -32,47 +32,47 @@ Gem::Specification.new do |s|
     "lib/loop_dance/task.rb",
     "loop_dance.gemspec",
     "rails/init.rb",
+    "rails_example/.gitignore",
+    "rails_example/Gemfile",
+    "rails_example/Rakefile",
+    "rails_example/app/controllers/application_controller.rb",
+    "rails_example/config.ru",
+    "rails_example/config/application.rb",
+    "rails_example/config/boot.rb",
+    "rails_example/config/database.yml",
+    "rails_example/config/environment.rb",
+    "rails_example/config/environments/development.rb",
+    "rails_example/config/environments/production.rb",
+    "rails_example/config/environments/test.rb",
+    "rails_example/config/initializers/backtrace_silencers.rb",
+    "rails_example/config/initializers/inflections.rb",
+    "rails_example/config/initializers/mime_types.rb",
+    "rails_example/config/initializers/secret_token.rb",
+    "rails_example/config/initializers/session_store.rb",
+    "rails_example/config/locales/en.yml",
+    "rails_example/config/routes.rb",
+    "rails_example/db/seeds.rb",
+    "rails_example/lib/dancers.rb",
+    "rails_example/lib/tasks/.gitkeep",
+    "rails_example/public/404.html",
+    "rails_example/public/422.html",
+    "rails_example/public/500.html",
+    "rails_example/public/favicon.ico",
+    "rails_example/public/images/rails.png",
+    "rails_example/public/index.html",
+    "rails_example/public/javascripts/application.js",
+    "rails_example/public/javascripts/controls.js",
+    "rails_example/public/javascripts/dragdrop.js",
+    "rails_example/public/javascripts/effects.js",
+    "rails_example/public/javascripts/prototype.js",
+    "rails_example/public/javascripts/rails.js",
+    "rails_example/public/robots.txt",
+    "rails_example/public/stylesheets/.gitkeep",
+    "rails_example/script/rails",
     "spec/dancer_spec.rb",
     "spec/spec_helper.rb",
     "spec/task_spec.rb",
-    "tasks/loop_dance.rake",
-    "test/rails/.gitignore",
-    "test/rails/Gemfile",
-    "test/rails/Rakefile",
-    "test/rails/app/controllers/application_controller.rb",
-    "test/rails/config.ru",
-    "test/rails/config/application.rb",
-    "test/rails/config/boot.rb",
-    "test/rails/config/database.yml",
-    "test/rails/config/environment.rb",
-    "test/rails/config/environments/development.rb",
-    "test/rails/config/environments/production.rb",
-    "test/rails/config/environments/test.rb",
-    "test/rails/config/initializers/backtrace_silencers.rb",
-    "test/rails/config/initializers/inflections.rb",
-    "test/rails/config/initializers/mime_types.rb",
-    "test/rails/config/initializers/secret_token.rb",
-    "test/rails/config/initializers/session_store.rb",
-    "test/rails/config/locales/en.yml",
-    "test/rails/config/routes.rb",
-    "test/rails/db/seeds.rb",
-    "test/rails/lib/dancers.rb",
-    "test/rails/lib/tasks/.gitkeep",
-    "test/rails/public/404.html",
-    "test/rails/public/422.html",
-    "test/rails/public/500.html",
-    "test/rails/public/favicon.ico",
-    "test/rails/public/images/rails.png",
-    "test/rails/public/index.html",
-    "test/rails/public/javascripts/application.js",
-    "test/rails/public/javascripts/controls.js",
-    "test/rails/public/javascripts/dragdrop.js",
-    "test/rails/public/javascripts/effects.js",
-    "test/rails/public/javascripts/prototype.js",
-    "test/rails/public/javascripts/rails.js",
-    "test/rails/public/robots.txt",
-    "test/rails/public/stylesheets/.gitkeep",
-    "test/rails/script/rails"
+    "tasks/loop_dance.rake"
   ]
   s.homepage = %q{http://github.com/dapi/loop_dance}
   s.licenses = ["MIT"]
@@ -82,22 +82,7 @@ Gem::Specification.new do |s|
   s.test_files = [
     "spec/dancer_spec.rb",
     "spec/spec_helper.rb",
-    "spec/task_spec.rb",
-    "test/rails/app/controllers/application_controller.rb",
-    "test/rails/config/application.rb",
-    "test/rails/config/boot.rb",
-    "test/rails/config/environment.rb",
-    "test/rails/config/environments/development.rb",
-    "test/rails/config/environments/production.rb",
-    "test/rails/config/environments/test.rb",
-    "test/rails/config/initializers/backtrace_silencers.rb",
-    "test/rails/config/initializers/inflections.rb",
-    "test/rails/config/initializers/mime_types.rb",
-    "test/rails/config/initializers/secret_token.rb",
-    "test/rails/config/initializers/session_store.rb",
-    "test/rails/config/routes.rb",
-    "test/rails/db/seeds.rb",
-    "test/rails/lib/dancers.rb"
+    "spec/task_spec.rb"
   ]
 
   if s.respond_to? :specification_version then
