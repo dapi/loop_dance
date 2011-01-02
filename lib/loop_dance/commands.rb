@@ -2,8 +2,19 @@ module LoopDance
   
   module Commands
 
-    attr_accessor :tasks, :timeout, :maximal_timeout
-    
+    attr_accessor :tasks, :timeout, :maximal_timeout, :muted_log, :autostart
+
+    @autostart = true
+
+    def mute_log
+      @muted_log = true
+    end
+
+    def disable_autostart
+      @autostart = false
+    end
+
+
     def every( interval, &block )
       @tasks = [] unless @tasks
       @tasks << LoopDance::Task.new( interval, &block )
@@ -14,7 +25,7 @@ module LoopDance
     def dance
       loop_init
       if @tasks.empty?
-        log "No tasks defined."
+        log "No tasks defined.", true
       else
         while (@run) do
           @tasks.each_with_index do |task, index|
@@ -28,7 +39,7 @@ module LoopDance
             sleep @timeout.to_i if @run
           end
         end
-      log "shutting down"
+      log "shutting down", true
     end
     
     def stop
@@ -39,8 +50,8 @@ module LoopDance
       "log/#{name.underscore}.pid"
     end
       
-    def log(text)
-      puts "#{Time.now} #{self}: #{text}"
+    def log(text, forced=false)
+      puts "#{Time.now} #{self}: #{text}" if forced || !muted_log
     end
 
     def print_status
@@ -75,7 +86,7 @@ module LoopDance
       
       def trap_signals
         sigtrap = proc { 
-          log "caught trapped signal, shutting down"
+          log "caught trapped signal, shutting down", true
           @run = false 
         }
         ["SIGTERM", "SIGINT", "SIGHUP"].each do |signal|
@@ -89,7 +100,7 @@ module LoopDance
         write_pid
         trap_signals
         @run = true
-        log "Process started and sleep for #{timeout.inspect}. kill #{Process.pid} to stop"
+        log "Process started and sleep for #{timeout.inspect}. kill #{Process.pid} to stop", true
       end
 
       def write_pid

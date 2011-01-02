@@ -8,7 +8,7 @@ module LoopDance
     def start_all( force=false )
       return puts "LoopDance: No dancers defined" if LoopDance::Dancer.subclasses.empty?
       LoopDance::Dancer.subclasses.each do |dancer|
-        dancer.controller.safely_start if force || dancer.start_automatic
+        dancer.controller.safely_start if force || dancer.autostart
       end
     end
 

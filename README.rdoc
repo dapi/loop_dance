@@ -41,6 +41,14 @@ By the rake tasks (TODO):
     rake loop_dance:dancer1:stop
     rake loop_dance:dancer1:status
 
+
+== Settings
+
+    class Dancer1 < LoopDance::Dancer
+      mute_log            # mute redundant logging, just start, stop and errors
+      disable_autostart   # disable autostart at rails server startup
+
+
 == Contributing to loop_dance
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet

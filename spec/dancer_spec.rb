@@ -43,7 +43,20 @@ describe LoopDance do
       it { Dancer2.tasks.count.should == 2 }
       it { Dancer2.timeout.should == 1 }
       it { Dancer2.maximal_timeout.should == 11 }
+      it { Dancer2.muted_log.should be_nil }
+      it { Dancer1.autostart.should be_true }
       
+    end
+
+    describe "muting log and disabling autostart" do
+      before(:all) do
+        class Dancer1 < LoopDance::Dancer
+          mute_log
+          disable_autostart
+        end
+      end
+      it { Dancer1.muted_log.should be_true }
+      it { Dancer1.autostart.should be_false }
     end
 
     describe "find right minimal timeout" do
