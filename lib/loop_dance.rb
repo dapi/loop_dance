@@ -12,6 +12,13 @@ module LoopDance
       end
     end
 
+    def restart_all( force=false )
+      return puts "LoopDance: No dancers defined" if LoopDance::Dancer.subclasses.empty?
+      LoopDance::Dancer.subclasses.each do |dancer|
+        dancer.controller.safely_restart if force || dancer.autostart
+      end
+    end
+
     def stop_all
       return puts "LoopDance: No dancers defined" if LoopDance::Dancer.subclasses.empty?
       LoopDance::Dancer.subclasses.each do |dancer|

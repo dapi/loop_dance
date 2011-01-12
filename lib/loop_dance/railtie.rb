@@ -12,7 +12,7 @@ module LoopDance
     initializer 'loop_dance.initialize' do
       self.class.load_dancers
       # Do not start dancers if rake or other tasks
-      LoopDance.start_all if server_startup?
+      LoopDance.restart_all if server_startup?
     end
 
 
