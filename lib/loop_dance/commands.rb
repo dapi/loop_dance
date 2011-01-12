@@ -4,16 +4,13 @@ module LoopDance
 
     attr_accessor :tasks, :timeout, :maximal_timeout, :muted_log, :autostart
 
-    @autostart = true
-
-    def mute_log
-      @muted_log = true
-    end
-
     def disable_autostart
       @autostart = false
     end
 
+    def mute_log
+      @muted_log = true
+    end
 
     def every( interval, &block )
       @tasks = [] unless @tasks

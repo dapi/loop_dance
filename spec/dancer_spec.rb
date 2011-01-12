@@ -2,13 +2,10 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe LoopDance do 
 
-  describe "setup" do
-  end
-
-  describe "finds minimal interval"
-
+  # describe "finds minimal interval"
+  
   describe "examples" do 
-
+    
     before(:all) do
       class Dancer1 < LoopDance::Dancer
         every 2.seconds do
@@ -25,8 +22,10 @@ describe LoopDance do
 
     it { Dancer1.tasks.count.should == 4 }
     it { Dancer1.timeout.should == 2 }
-    it { LoopDance::Dancer.tasks.should be_blank }
     it { Dancer1.maximal_timeout.should == 10 }
+    it { Dancer1.autostart.should be_true }
+    
+    it { LoopDance::Dancer.tasks.should be_blank }
 
 
     describe "another dancer not change first dancer's tasks" do
@@ -44,7 +43,7 @@ describe LoopDance do
       it { Dancer2.timeout.should == 1 }
       it { Dancer2.maximal_timeout.should == 11 }
       it { Dancer2.muted_log.should be_nil }
-      it { Dancer1.autostart.should be_true }
+      it { Dancer2.autostart.should be_true }
       
     end
 
@@ -57,6 +56,7 @@ describe LoopDance do
       end
       it { Dancer1.muted_log.should be_true }
       it { Dancer1.autostart.should be_false }
+      it { Dancer1.autostart.should_not be_nil }
     end
 
     describe "find right minimal timeout" do

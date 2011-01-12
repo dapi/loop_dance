@@ -46,6 +46,21 @@ module LoopDance
       log_exception exception
     end
 
+    def safely_restart
+      dancer.log  "Retarting.. (#{@start_command})"
+      if running?
+        dancer.log "Dancer is already running, stop"
+        stop
+        dancer.log "Start"
+        start
+      else
+        start
+        dancer.log "Started"
+      end
+    rescue => exception # DaemonController::StartTimeout
+      log_exception exception
+    end
+
     def safely_stop
       dancer.log  "Stopping.."
       stop if running?
