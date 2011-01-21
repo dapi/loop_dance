@@ -39,6 +39,10 @@ namespace :loop_dance do
         dancer.controller.safely_start
       end
       
+      task :restart => :loop_dance do
+        dancer.controller.safely_restart
+      end
+      
       desc "Stop #{dancer}"
       task :stop => :loop_dance do
         dancer.controller.safely_stop
