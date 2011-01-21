@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{loop_dance}
-  s.version = "0.3.1"
+  s.version = "0.4.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Danil Pismenny"]
-  s.date = %q{2011-01-02}
+  s.date = %q{2011-01-21}
   s.description = %q{Really simple daemon builder and manager. Based on the looper and daemon_controller}
   s.email = %q{danil@orionet.ru}
   s.extra_rdoc_files = [
@@ -51,6 +51,7 @@ Gem::Specification.new do |s|
     "rails_example/config/initializers/session_store.rb",
     "rails_example/config/locales/en.yml",
     "rails_example/config/routes.rb",
+    "rails_example/db/schema.rb",
     "rails_example/db/seeds.rb",
     "rails_example/lib/dancers.rb",
     "rails_example/lib/tasks/.gitkeep",
@@ -77,7 +78,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/dapi/loop_dance}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.7}
+  s.rubygems_version = %q{1.4.2}
   s.summary = %q{Daemon builder and controller. Easy setup and managed from the rails application or rake tasks. Autostart at rails server startup}
   s.test_files = [
     "spec/dancer_spec.rb",
@@ -86,7 +87,6 @@ Gem::Specification.new do |s|
   ]
 
   if s.respond_to? :specification_version then
-    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
