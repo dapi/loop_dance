@@ -34,11 +34,12 @@ namespace :loop_dance do
     
     namespace dancer.name.underscore.to_sym do
       
-      desc "Start (or restart) all #{dancer}"
+      desc "Start #{dancer}"
       task :start => :loop_dance do
         dancer.controller.safely_start
       end
       
+      desc "Restart #{dancer}"
       task :restart => :loop_dance do
         dancer.controller.safely_restart
       end
