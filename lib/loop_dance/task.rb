@@ -5,7 +5,9 @@ class LoopDance::Task
     run_count=0
     self.interval = interval
     self.block = block
-    self.last_run_at = Time.now
+    
+    # Run tasks when start dancer
+    # self.last_run_at = Time.now
   end
   
   def time_to_run?
