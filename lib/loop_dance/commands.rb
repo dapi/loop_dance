@@ -2,7 +2,11 @@ module LoopDance
   
   module Commands
 
-    attr_accessor :tasks, :timeout, :maximal_timeout, :muted_log, :autostart
+    # internal vars
+    attr_accessor :tasks, :timeout, :maximal_timeout
+
+    # options
+    attr_accessor :muted_log, :autostart, :start_timeout, :stop_timeout, :log_file_activity_timeout
 
     def enable_autostart
       @autostart = true
