@@ -4,8 +4,8 @@ module LoopDance
 
     attr_accessor :tasks, :timeout, :maximal_timeout, :muted_log, :autostart
 
-    def disable_autostart
-      @autostart = false
+    def enable_autostart
+      @autostart = true
     end
 
     def mute_log

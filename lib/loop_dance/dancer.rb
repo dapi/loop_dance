@@ -11,9 +11,8 @@ module LoopDance
     
     class << self
       
-      def inherited(subclass)
-        subclass.autostart = true
-      end
+      # def inherited(subclass)
+      # end
       
       def controller
         @controller ||= LoopDance::Controller.new self
