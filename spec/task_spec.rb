@@ -28,12 +28,13 @@ describe LoopDance::Task do
       subject.last_run_at.should < Time.now
     end
 
-    it "should not run straight away" do
-      should_not be_time_to_run
+    it "should  run straight away" do
+      should be_time_to_run
     end
 
     it "should run if it's time" do
-      Time.stub(:now).and_return(subject.last_run_at + interval)
+      t = Time.now()
+      Time.stub(:now).and_return(t + interval)
       should be_time_to_run
     end
     

@@ -15,7 +15,7 @@ module LoopDance
           :start_command => start_command,
           :ping_command => lambda { true },
           :pid_file => dancer.pid_file,
-          :log_file => log_file
+          :log_file => log_file,
           :start_timeout => dancer.start_timeout,
           :stop_timeout => dancer.stop_timeout,
           :log_file_activity_timeout => dancer.log_file_activity_timeout

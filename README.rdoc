@@ -24,8 +24,6 @@ Create file 'lib/loop_dance.rb':
 
     end
 
-LoopDance automatically starts at the rails 3 server startup.
-
 == Useful management
 
 From the rails application:
@@ -47,7 +45,7 @@ By the rake tasks (TODO):
 
     class Dancer1 < LoopDance::Dancer
       mute_log            # mute redundant logging, just start, stop and errors
-      disable_autostart   # disable autostart at rails server startup
+      enable_autostart    # enable autostart at rails server startup
 
 
 == Contributing to loop_dance
