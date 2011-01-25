@@ -9,12 +9,12 @@ namespace :loop_dance do
 
   desc "Start (or restart) all dancers"
   task :start_all => :loop_dance do 
-    LoopDance.start_all
+    LoopDance.start_all( true )
   end
 
   desc "Start restart all dancers"
   task :restart_all => :loop_dance do 
-    LoopDance.restart_all
+    LoopDance.restart_all( true )
   end
 
   desc "Stop all dancers"
