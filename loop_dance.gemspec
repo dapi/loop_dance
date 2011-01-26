@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{loop_dance}
-  s.version = "0.4.5"
+  s.version = "0.4.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Danil Pismenny"]
-  s.date = %q{2011-01-25}
+  s.date = %q{2011-01-26}
   s.description = %q{Really simple daemon builder and manager. Based on the looper and daemon_controller}
   s.email = %q{danil@orionet.ru}
   s.extra_rdoc_files = [
