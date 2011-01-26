@@ -47,6 +47,14 @@ By the rake tasks (TODO):
       mute_log            # mute redundant logging, just start, stop and errors
       enable_autostart    # enable autostart at rails server startup
 
+      # Don't trap signals. True by default (trapped)
+      @trap_signals = false
+      
+      # daemon_controller`s options
+      @start_timeout = 60         # 15 by default
+      @stop_timeout = 60          # 15 by default
+      @log_file_activity_timeout  # 7 by default
+
 
 == Contributing to loop_dance
  

@@ -1,12 +1,14 @@
 module LoopDance
   
   module Commands
+    
+    # # options
+    attr_accessor :muted_log, :autostart, :trap_signals,
+    :start_timeout, :stop_timeout, :log_file_activity_timeout
 
-    # internal vars
-    attr_accessor :tasks, :timeout, :maximal_timeout
-
-    # options
-    attr_accessor :muted_log, :autostart, :start_timeout, :stop_timeout, :log_file_activity_timeout
+    def inherited(subclass)
+      subclass.trap_signals = true
+    end
 
     def enable_autostart
       @autostart = true
@@ -85,7 +87,8 @@ module LoopDance
         return true
       end
       
-      def trap_signals
+      def do_trap_signals
+        log "Trap signals"
         sigtrap = proc { 
           log "caught trapped signal, shutting down", true
           @run = false 
@@ -99,9 +102,9 @@ module LoopDance
         # we don't want to delay output to sdtout until the program stops, we want feedback!
         $stdout.sync=true
         write_pid
-        trap_signals
+        do_trap_signals if trap_signals
         @run = true
-        log "Process started and sleep for #{timeout.inspect}. kill #{Process.pid} to stop", true
+        log "Process started and sleep for #{@timeout.inspect}. kill #{Process.pid} to stop", true
       end
 
       def write_pid
