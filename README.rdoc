@@ -10,7 +10,7 @@ One dancer is one daemon.
 
 == Simple to setup
 
-Create file 'lib/loop_dance.rb':
+Create file 'lib/dancers.rb':
 
     class Dancer1 < LoopDance::Dancer
 
