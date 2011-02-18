@@ -8,6 +8,7 @@ describe LoopDance do
     
     before(:all) do
       class Dancer1 < LoopDance::Dancer
+        start_timeout 60
         every 2.seconds do
         end
         every 4.seconds do
@@ -21,14 +22,14 @@ describe LoopDance do
 
 
     it { Dancer1.tasks.count.should == 4 }
-    it { Dancer1.timeout.should == 2 }
-    it { Dancer1.maximal_timeout.should == 10 }
+    it { Dancer1.start_timeout.should == 60 }
+    it { Dancer1.stop_timeout.should be_nil }
     it { Dancer1.autostart.should be_false }
     
     it { LoopDance::Dancer.tasks.should be_blank }
 
 
-    describe "another dancer not change first dancer's tasks" do
+     describe "another dancer not change first dancer's tasks" do
       
       before(:all) do
         class Dancer2 < LoopDance::Dancer
@@ -40,9 +41,7 @@ describe LoopDance do
       end
 
       it { Dancer2.tasks.count.should == 2 }
-      it { Dancer2.timeout.should == 1 }
-      it { Dancer2.maximal_timeout.should == 11 }
-      it { Dancer2.muted_log.should be_nil }
+      it { Dancer2.mute_log.should be_nil }
       it { Dancer2.autostart.should be_false }
       
     end
@@ -50,11 +49,11 @@ describe LoopDance do
     describe "muting log and enabling autostart" do
       before(:all) do
         class Dancer1 < LoopDance::Dancer
-          mute_log
-          enable_autostart
+          mute_log true
+          autostart true
         end
       end
-      it { Dancer1.muted_log.should be_true }
+      it { Dancer1.mute_log.should be_true }
       it { Dancer1.autostart.should be_true }
     end
 
@@ -71,25 +70,25 @@ describe LoopDance do
 
       it { Dancer3.tasks.count.should == 2 }
       it { Dancer3.timeout.should == 3 }
-      it { Dancer3.maximal_timeout.should == 9 }
       
     end
 
-    describe "method stop stops the loop" do
+    describe "calculate minimal interval" do
       
       before(:all) do
         class Dancer < LoopDance::Dancer
+          mute_log true
           every 2.seconds do
-            stop
+            stop_me
           end
         end
       end
 
       it { Dancer.dance }
-      it { Dancer.maximal_timeout.should == 2 }
+      it { Dancer.send(:run).should be_false }
+      it { Dancer.timeout.should == 2 }
       
     end
-
 
     
   end

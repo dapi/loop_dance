@@ -1,8 +1,9 @@
 class LoopDance::Task
-  attr_accessor :last_run_at, :block, :interval
+  attr_accessor :last_run_at, :dancer, :block, :interval
   
-  def initialize( interval, &block )
+  def initialize( dancer, interval, &block )
     run_count=0
+    self.dancer = dancer
     self.interval = interval
     self.block = block
     
@@ -18,6 +19,7 @@ class LoopDance::Task
     block.call
   rescue Exception => e
     puts "Uncaught exception bubbled up: \n#{e.class}: #{e.message}\n\t#{e.backtrace.join("\n\t")} "
+    dancer.send(:stop_dancer)
   ensure
     self.last_run_at = Time.now
   end

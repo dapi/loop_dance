@@ -1,26 +1,29 @@
 module LoopDance
   
   module Commands
+
+    def self.super_attr_accessor(*syms)
+      attr_writer *syms
+      syms.each do |sym|
+        next if sym.is_a?(Hash)
+        class_eval  "def #{sym} value = (nil;flag=true); if flag; return @#{sym}; else; @#{sym} = value; end ; end"
+      end
+    end
+      
+    super_attr_accessor( :mute_log, :autostart, :trap_signals,
+      :start_timeout, :stop_timeout, :log_file_activity_timeout, :tasks )
+
     
-    # # options
-    attr_accessor :muted_log, :autostart, :trap_signals,
-    :start_timeout, :stop_timeout, :log_file_activity_timeout
+    attr_reader :timeout
+    
 
     def inherited(subclass)
       subclass.trap_signals = true
     end
 
-    def enable_autostart
-      @autostart = true
-    end
-
-    def mute_log
-      @muted_log = true
-    end
-
     def every( interval, &block )
       @tasks = [] unless @tasks
-      @tasks << LoopDance::Task.new( interval, &block )
+      @tasks << LoopDance::Task.new( self, interval, &block )
       find_minimal_timeout interval
       @maximal_timeout = interval if !@maximal_timeout || @maximal_timeout < interval
     end
@@ -32,6 +35,7 @@ module LoopDance
       else
         while (@run) do
           @tasks.each_with_index do |task, index|
+            break unless @run
             if task.time_to_run?
               log "Run task ##{index} for every #{task.interval.inspect}"
               task.run 
@@ -45,7 +49,7 @@ module LoopDance
       log "shutting down", true
     end
     
-    def stop
+    def stop_me
       @run = false
     end
     
@@ -54,11 +58,11 @@ module LoopDance
     end
       
     def log(text, forced=false)
-      puts "#{Time.now} #{self}: #{text}" if forced || !muted_log
+      puts "#{Time.now} #{self}: #{text}" if forced || !mute_log
     end
 
     def print_status
-      puts  "#{self}: timeout: #{self.timeout.inspect}, status: #{self.controller.running? ? 'running' : 'stopped'}\n"
+      puts  "#{self}: timeout: #{@timeout.inspect}, status: #{self.controller.running? ? 'running' : 'stopped'}\n"
       if tasks.empty?
         puts "  no tasks defined"
       else
@@ -69,6 +73,8 @@ module LoopDance
     end
     
     private
+
+    attr_accessor :run
 
     def find_minimal_timeout( interval )
       return @timeout = interval if @timeout.blank?

@@ -4,12 +4,12 @@ describe LoopDance::Task do
 
   describe "setup" do
 
-
     let(:interval) { 60 }
+    let(:dancer) { LoopDance::Dancer }
     
     before {
       @result = 0
-      @task = LoopDance::Task.new interval do
+      @task = LoopDance::Task.new dancer, interval do
         @result+=1
       end
     }
