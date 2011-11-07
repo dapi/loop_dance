@@ -1,5 +1,7 @@
 = LoopDance
 
+[![Build Status](https://secure.travis-ci.org/dapi/loop_dance.png)](http://travis-ci.org/dapi/loop_dance)
+
 No forks. No threads. Just looped pseudo-scheduler based on `daemon_controller` and `looper`.
 
 One dancer is one daemon.
