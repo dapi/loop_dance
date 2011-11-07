@@ -59,6 +59,10 @@ By the rake tasks:
 
       ..
 
+== Alternatives
+
+* https://github.com/DAddYE/foreverb - I Like it!
+
 == Contributing to loop_dance
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
