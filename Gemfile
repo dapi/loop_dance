@@ -10,8 +10,6 @@ gem "daemon_controller", ">= 0.2.5"
 group :development, :test do
   gem "bundler"
   gem "jeweler"
-  gem "rcov", ">= 0"
-  gem "ruby-debug"
   gem "rspec"
   gem "shoulda"
 end
